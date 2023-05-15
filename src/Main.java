@@ -1,16 +1,38 @@
 import Entidades.Produtos;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Produtos produto1 = new Produtos("blusa", 55.5, 5);
+        List<Produtos> listaProdutos = new ArrayList<>();
+        Scanner entrada = new Scanner(System.in);
 
-        produto1.adicionarProduto(2);
-        //System.out.println("Total de " + produto1.getNomeProduto() + " é "+ produto1.getQuantidadeProduto());
-        produto1.removerProduto(3);
-        //System.out.println("Total de " + produto1.getNomeProduto() + " no estoque é "+ produto1.getQuantidadeProduto());
+        String nome = "";
 
-        System.out.println(produto1);
+        while (!nome.equalsIgnoreCase("fim")){
+            System.out.println("Você deseja cadastrar um novo produto? " +
+                    "Se desejar finalizar a operação, digite fim");
+            nome = entrada.next();
+            Produtos produtoX = new Produtos();
 
+            if (!nome.equalsIgnoreCase("fim")){
+
+                System.out.println("Digite o nome do produto");
+                produtoX.setNomeProduto(entrada.next());
+                System.out.println("Digite o valor unitário deste produto");
+                produtoX.setPrecoProduto(entrada.nextDouble());
+                System.out.println("Digite a quantidade deste produto");
+                produtoX.adicionarProduto(entrada.nextInt());
+
+                listaProdutos.add(produtoX);
+                Produtos.setTotalDeProdutos(listaProdutos.size());
+              }
+        }
+
+        System.out.println("O estoque contém " + Produtos.getTotalDeProdutos() + " tipos de produtos diferentes");
+        System.out.println(listaProdutos);
 
     }
 }

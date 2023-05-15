@@ -6,12 +6,8 @@ public class Produtos {
     private int quantidadeProduto;
     private double valorTotal;
     private static int totalDeProdutos;
-
-   public Produtos (String nome, double preco, int quantidade){
-        this.nomeProduto = nome;
-        this.precoProduto = preco;
-        this.quantidadeProduto = quantidade;
-        Produtos.totalDeProdutos++;
+    public static void setTotalDeProdutos(int totalDeProdutos) {
+        Produtos.totalDeProdutos = totalDeProdutos;
     }
 
     public String getNomeProduto(){
@@ -24,6 +20,13 @@ public class Produtos {
 
     public double getValorTotal(){
        return this.valorTotal;
+    }
+
+    public void setNomeProduto(String nomeProduto){
+       this.nomeProduto = nomeProduto;
+    }
+    public void setPrecoProduto(double precoProduto){
+       this.precoProduto = precoProduto;
     }
 
     public void adicionarProduto (int numero){
@@ -41,7 +44,6 @@ public class Produtos {
     public static int getTotalDeProdutos() {
     return Produtos.totalDeProdutos;
 }
-
     @Override
     public String toString(){
         return this.nomeProduto + ", por R$ " +
